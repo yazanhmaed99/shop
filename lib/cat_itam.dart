@@ -21,14 +21,15 @@ class CatItem extends StatelessWidget {
         children: [
           Container(
             width: 74,
-            height: 74,
-            decoration:  BoxDecoration(
+            // height: 74,
+            decoration: BoxDecoration(
               shape: BoxShape.circle,
               color: ColorM.seconde,
             ),
             child: ImageIcon(
               AssetImage(icon),
-              color:  ColorM.primary,
+              size: 45,
+              color: ColorM.primary,
             ),
           ),
           const SizedBox(

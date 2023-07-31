@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:projectapp/colors.dart';
+import 'package:projectapp/com.dart';
 
 import 'cat_itam.dart';
 import 'home_item.dart';
@@ -15,13 +16,17 @@ class HomeScreen extends StatelessWidget {
         actions: [
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: IconButton(
-              onPressed: () {},
-              icon: const Icon(
-                Icons.notifications,
-                color: Colors.grey,
+            child: Container(
+              decoration: const BoxDecoration(
+                  shape: BoxShape.circle, color: Colors.white),
+              child: IconButton(
+                onPressed: () {},
+                icon: const Icon(
+                  Icons.notifications,
+                  color: Colors.grey,
+                ),
+                color: Colors.white,
               ),
-              color: Colors.white,
             ),
           )
         ],
@@ -57,6 +62,64 @@ class HomeScreen extends StatelessWidget {
           physics: const BouncingScrollPhysics(),
           child: Column(
             children: [
+              Container(
+                height: 100,
+                decoration: BoxDecoration(color: Colors.white, boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.5),
+                    spreadRadius: 5,
+                    blurRadius: 7,
+                    offset: const Offset(0, 3), // changes position of shadow
+                  ),
+                ]),
+                child: Row(
+                  children: [
+                    SizedBox(
+                      width: 300,
+                      child: TextField(
+                        keyboardType: TextInputType.name,
+                        // controller: nameController,
+                        decoration: InputDecoration(
+                          filled: true,
+                          focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(22),
+                              borderSide: BorderSide(color: ColorM.primary)),
+                          prefixIconColor: ColorM.primary,
+                          hintStyle: const TextStyle(color: Colors.black54),
+                          labelStyle: const TextStyle(color: Colors.black54),
+                          fillColor: ColorM.seconde,
+                          hoverColor: ColorM.seconde,
+                          focusColor: ColorM.seconde,
+                          prefixIcon: const Icon(
+                            Icons.search,
+                            color: Colors.black54,
+                          ),
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(22)),
+                          labelText: 'Search',
+                          hintText: 'Search',
+                        ),
+                      ),
+                    ),
+                    const Spacer(),
+                    Container(
+                      padding: const EdgeInsets.all(17),
+                      decoration: BoxDecoration(
+                          shape: BoxShape.circle, color: ColorM.seconde),
+                      child: IconButton(
+                          onPressed: () {},
+                          icon: ImageIcon(
+                            const AssetImage('assets/images/setting.png'),
+                            size: 27,
+                            color: ColorM.primary,
+                          )),
+                    )
+                  ],
+                ),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
@@ -193,27 +256,19 @@ class HomeScreen extends StatelessWidget {
                       ))
                 ],
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: const [
-                  HomeItem(
-                    icon:
-                        'assets/images/doner-kebab-shawarma-with-ingredients-beef-meat-lettuce-onion-tomatoes-spice.png',
-                    title: 'Food',
-                    price: '10',
+              SizedBox(
+                width: double.infinity,
+                height: 150,
+                child: ListView.builder(
+                  physics: const BouncingScrollPhysics(),
+                  scrollDirection: Axis.horizontal,
+                  itemCount: topRateData['item'].length,
+                  itemBuilder: (context, index) => HomeItem(
+                    icon: topRateData['item'][index]['icon'],
+                    title: topRateData['item'][index]['title'],
+                    price: topRateData['item'][index]['price'],
                   ),
-                  HomeItem(
-                    icon:
-                        'assets/images/kisspng-hamburger-fried-chicken-chicken-sandwich-fast-food-hamburger-5a694e36561572.4592676415168507423526.png',
-                    title: 'Food',
-                    price: '15',
-                  ),
-                  HomeItem(
-                    icon: 'assets/images/46-pizza-png-image.png',
-                    title: 'Food',
-                    price: '7',
-                  ),
-                ],
+                ),
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -234,26 +289,19 @@ class HomeScreen extends StatelessWidget {
                       ))
                 ],
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: const [
-                  HomeItem(
-                    icon:
-                        'assets/images/PikPng.com_paloma-de-la-paz_5978276.png',
-                    title: 'Food',
-                    price: '7',
+              SizedBox(
+                width: double.infinity,
+                height: 150,
+                child: ListView.builder(
+                  physics: const BouncingScrollPhysics(),
+                  scrollDirection: Axis.horizontal,
+                  itemCount: nearToData['item'].length,
+                  itemBuilder: (context, index) => HomeItem(
+                    icon: nearToData['item'][index]['icon'],
+                    title: nearToData['item'][index]['title'],
+                    price: nearToData['item'][index]['price'],
                   ),
-                  HomeItem(
-                    icon: 'assets/images/PngItem_2251486.png',
-                    title: 'Food',
-                    price: '12',
-                  ),
-                  HomeItem(
-                    icon: 'assets/images/pngkey.com-recipe-png-9160285.png',
-                    title: 'Food',
-                    price: '20',
-                  ),
-                ],
+                ),
               ),
               const SizedBox(
                 height: 50,

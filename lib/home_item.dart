@@ -14,7 +14,7 @@ class HomeItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: 115,
-      height: 144,
+      // height: 144,
       color:  ColorM.seconde,
       child: Column(
         children: [
