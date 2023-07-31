@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:projectapp/colors.dart';
+
+import 'cat_itam.dart';
+import 'home_item.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -7,7 +11,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color(0xffF5F5F5),
+        backgroundColor: ColorM.seconde,
         actions: [
           Padding(
             padding: const EdgeInsets.all(8.0),
@@ -31,12 +35,12 @@ class HomeScreen extends StatelessWidget {
                 style: TextStyle(fontSize: 12, color: Colors.grey),
               ),
               Row(
-                children: const [
+                children: [
                   Icon(
                     Icons.location_on,
-                    color: Color(0xff0A9C2D),
+                    color: ColorM.primary,
                   ),
-                  Text(
+                  const Text(
                     'Amman',
                     style: TextStyle(fontSize: 16, color: Colors.black),
                   ),
@@ -50,107 +54,26 @@ class HomeScreen extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 22),
         child: SingleChildScrollView(
+          physics: const BouncingScrollPhysics(),
           child: Column(
             children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Column(
-                    children: [
-                      Container(
-                        width: 74,
-                        height: 74,
-                        decoration: const BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Color(0xFFF5F5F5),
-                        ),
-                        child: const ImageIcon(
-                          AssetImage('assets/images/fastfood.png'),
-                          color: Color(0xFF0A9C2D),
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 3,
-                      ),
-                      const Text(
-                        'Fast Food',
-                        style: TextStyle(
-                            fontSize: 12, fontWeight: FontWeight.normal),
-                      )
-                    ],
-                  ),
-                  Column(
-                    children: [
-                      Container(
-                        width: 74,
-                        height: 74,
-                        decoration: const BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Color(0xFFF5F5F5),
-                        ),
-                        child: const ImageIcon(
-                          AssetImage('assets/images/maindishes.png'),
-                          color: Color(0xFF0A9C2D),
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 3,
-                      ),
-                      const Text(
-                        'Main Dishes',
-                        style: TextStyle(
-                            fontSize: 12, fontWeight: FontWeight.normal),
-                      )
-                    ],
-                  ),
-                  Column(
-                    children: [
-                      Container(
-                        width: 74,
-                        height: 74,
-                        decoration: const BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Color(0xFFF5F5F5),
-                        ),
-                        child: const ImageIcon(
-                          AssetImage('assets/images/seafood.png'),
-                          color: Color(0xFF0A9C2D),
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 3,
-                      ),
-                      const Text(
-                        'Sea Food',
-                        style: TextStyle(
-                            fontSize: 12, fontWeight: FontWeight.normal),
-                      )
-                    ],
-                  ),
-                  Column(
-                    children: [
-                      Container(
-                        width: 74,
-                        height: 74,
-                        decoration: const BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Color(0xFFF5F5F5),
-                        ),
-                        child: const ImageIcon(
-                          AssetImage('assets/images/dessert.png'),
-                          color: Color(0xFF0A9C2D),
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 3,
-                      ),
-                      const Text(
-                        'Dassert',
-                        style: TextStyle(
-                            fontSize: 12, fontWeight: FontWeight.normal),
-                      )
-                    ],
-                  ),
+                  CatItem(
+                      icon: 'assets/images/fastfood.png',
+                      title: 'Fast Food',
+                      onTap: (() {
+                        // ignore: avoid_print
+                        print('object');
+                      })),
+                  const CatItem(
+                      icon: 'assets/images/maindishes.png',
+                      title: 'Main Dishes'),
+                  const CatItem(
+                      icon: 'assets/images/seafood.png', title: 'Sea Food'),
+                  const CatItem(
+                      icon: 'assets/images/dessert.png', title: 'Dassert'),
                 ],
               ),
               const Divider(),
@@ -164,12 +87,12 @@ class HomeScreen extends StatelessWidget {
                   ),
                   TextButton(
                       onPressed: () {},
-                      child: const Text(
+                      child: Text(
                         'See All',
                         style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.normal,
-                            color: Color(0xff0A9C2D)),
+                            color: ColorM.primary),
                       ))
                 ],
               ),
@@ -180,7 +103,7 @@ class HomeScreen extends StatelessWidget {
                     height: 150,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(16),
-                        color: const Color(0xff0A9C2D)),
+                        color: ColorM.primary),
                     child: Row(
                       children: [
                         const SizedBox(
@@ -225,9 +148,9 @@ class HomeScreen extends StatelessWidget {
                         Container(
                           width: 8,
                           height: 8,
-                          decoration: const BoxDecoration(
+                          decoration: BoxDecoration(
                             shape: BoxShape.circle,
-                            color: Color(0xff0A9C2D),
+                            color: ColorM.primary,
                           ),
                         ),
                         Container(
@@ -261,86 +184,34 @@ class HomeScreen extends StatelessWidget {
                   ),
                   TextButton(
                       onPressed: () {},
-                      child: const Text(
+                      child: Text(
                         'See All',
                         style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.normal,
-                            color: Color(0xff0A9C2D)),
+                            color: ColorM.primary),
                       ))
                 ],
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Container(
-                    width: 115,
-                    height: 144,
-                    color: const Color(0xffF5F5F5),
-                    child: Column(
-                      children: [
-                        Image.asset(
-                          'assets/images/doner-kebab-shawarma-with-ingredients-beef-meat-lettuce-onion-tomatoes-spice.png',
-                          height: 80,
-                        ),
-                        const Text('Food'),
-                        ElevatedButton(
-                          onPressed: () {},
-                          style: ButtonStyle(
-                              minimumSize:
-                                  MaterialStateProperty.all(const Size(73, 21)),
-                              backgroundColor: MaterialStateProperty.all(
-                                  const Color(0xff0A9C2D))),
-                          child: const Text('2 JD'),
-                        )
-                      ],
-                    ),
+                children: const [
+                  HomeItem(
+                    icon:
+                        'assets/images/doner-kebab-shawarma-with-ingredients-beef-meat-lettuce-onion-tomatoes-spice.png',
+                    title: 'Food',
+                    price: '10',
                   ),
-                  Container(
-                    width: 115,
-                    height: 144,
-                    color: const Color(0xffF5F5F5),
-                    child: Column(
-                      children: [
-                        Image.asset(
-                          'assets/images/kisspng-hamburger-fried-chicken-chicken-sandwich-fast-food-hamburger-5a694e36561572.4592676415168507423526.png',
-                          height: 80,
-                        ),
-                        const Text('Food'),
-                        ElevatedButton(
-                          onPressed: () {},
-                          style: ButtonStyle(
-                              minimumSize:
-                                  MaterialStateProperty.all(const Size(73, 21)),
-                              backgroundColor: MaterialStateProperty.all(
-                                  const Color(0xff0A9C2D))),
-                          child: const Text('2 JD'),
-                        )
-                      ],
-                    ),
+                  HomeItem(
+                    icon:
+                        'assets/images/kisspng-hamburger-fried-chicken-chicken-sandwich-fast-food-hamburger-5a694e36561572.4592676415168507423526.png',
+                    title: 'Food',
+                    price: '15',
                   ),
-                  Container(
-                    width: 115,
-                    height: 144,
-                    color: const Color(0xffF5F5F5),
-                    child: Column(
-                      children: [
-                        Image.asset(
-                          'assets/images/46-pizza-png-image.png',
-                          height: 80,
-                        ),
-                        const Text('Food'),
-                        ElevatedButton(
-                          onPressed: () {},
-                          style: ButtonStyle(
-                              minimumSize:
-                                  MaterialStateProperty.all(const Size(73, 21)),
-                              backgroundColor: MaterialStateProperty.all(
-                                  const Color(0xff0A9C2D))),
-                          child: const Text('2 JD'),
-                        )
-                      ],
-                    ),
+                  HomeItem(
+                    icon: 'assets/images/46-pizza-png-image.png',
+                    title: 'Food',
+                    price: '7',
                   ),
                 ],
               ),
@@ -354,89 +225,39 @@ class HomeScreen extends StatelessWidget {
                   ),
                   TextButton(
                       onPressed: () {},
-                      child: const Text(
+                      child: Text(
                         'See All',
                         style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.normal,
-                            color: Color(0xff0A9C2D)),
+                            color: ColorM.primary),
                       ))
                 ],
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Container(
-                    width: 115,
-                    height: 144,
-                    color: const Color(0xffF5F5F5),
-                    child: Column(
-                      children: [
-                        Image.asset(
-                          'assets/images/PikPng.com_paloma-de-la-paz_5978276.png',
-                          height: 80,
-                        ),
-                        const Text('Food'),
-                        ElevatedButton(
-                          onPressed: () {},
-                          style: ButtonStyle(
-                              minimumSize:
-                                  MaterialStateProperty.all(const Size(73, 21)),
-                              backgroundColor: MaterialStateProperty.all(
-                                  const Color(0xff0A9C2D))),
-                          child: const Text('2 JD'),
-                        )
-                      ],
-                    ),
+                children: const [
+                  HomeItem(
+                    icon:
+                        'assets/images/PikPng.com_paloma-de-la-paz_5978276.png',
+                    title: 'Food',
+                    price: '7',
                   ),
-                  Container(
-                    width: 115,
-                    height: 144,
-                    color: const Color(0xffF5F5F5),
-                    child: Column(
-                      children: [
-                        Image.asset(
-                          'assets/images/PngItem_2251486.png',
-                          height: 80,
-                        ),
-                        const Text('Food'),
-                        ElevatedButton(
-                          onPressed: () {},
-                          style: ButtonStyle(
-                              minimumSize:
-                                  MaterialStateProperty.all(const Size(73, 21)),
-                              backgroundColor: MaterialStateProperty.all(
-                                  const Color(0xff0A9C2D))),
-                          child: const Text('2 JD'),
-                        )
-                      ],
-                    ),
+                  HomeItem(
+                    icon: 'assets/images/PngItem_2251486.png',
+                    title: 'Food',
+                    price: '12',
                   ),
-                  Container(
-                    width: 115,
-                    height: 144,
-                    color: const Color(0xffF5F5F5),
-                    child: Column(
-                      children: [
-                        Image.asset(
-                          'assets/images/pngkey.com-recipe-png-9160285.png',
-                          height: 80,
-                        ),
-                        const Text('Food'),
-                        ElevatedButton(
-                          onPressed: () {},
-                          style: ButtonStyle(
-                              minimumSize:
-                                  MaterialStateProperty.all(const Size(73, 21)),
-                              backgroundColor: MaterialStateProperty.all(
-                                  const Color(0xff0A9C2D))),
-                          child: const Text('2 JD'),
-                        )
-                      ],
-                    ),
+                  HomeItem(
+                    icon: 'assets/images/pngkey.com-recipe-png-9160285.png',
+                    title: 'Food',
+                    price: '20',
                   ),
                 ],
               ),
+              const SizedBox(
+                height: 50,
+              )
             ],
           ),
         ),
@@ -452,8 +273,8 @@ class HomeScreen extends StatelessWidget {
               fontSize: 12, fontWeight: FontWeight.normal, color: Colors.black),
           //   backgroundColor: Colors.white,
           unselectedItemColor: Colors.grey,
-          selectedIconTheme: const IconThemeData(
-            color: Color(0xff0A9C2D),
+          selectedIconTheme: IconThemeData(
+            color: ColorM.primary,
           ),
           currentIndex: 0,
           items: const [
@@ -471,7 +292,7 @@ class HomeScreen extends StatelessWidget {
                 icon: Icon(Icons.person, size: 22), label: 'Person'),
           ]),
       floatingActionButton: FloatingActionButton(
-          backgroundColor: const Color(0xff0A9C2D),
+          backgroundColor: ColorM.primary,
           onPressed: () {},
           child: const Icon(
             Icons.shopping_basket_outlined,
