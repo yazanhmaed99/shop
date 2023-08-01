@@ -1,5 +1,5 @@
-
 import 'package:flutter/material.dart';
+import 'package:intro_slider/intro_slider.dart';
 import 'package:projectapp/colors.dart';
 import 'package:projectapp/com.dart';
 import 'package:projectapp/special_offers.dart';
@@ -16,7 +16,6 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: ColorM.seconde,
         actions: [
-        
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Container(
@@ -162,57 +161,77 @@ class HomeScreen extends StatelessWidget {
                       ))
                 ],
               ),
-           SizedBox(
-            height: 150,
-             child: ListView(
 
-               children:[SpecialOffers(
-                          dis: '30',
-                          title: 'Special Deal\nFor October!',
-                          image: 'assets/images/bu.png',
-                          color: ColorM.primary),
-                          SpecialOffers(
-                        dis: '30',
-                        title: 'Special Deal\nFor October!',
-                        image: 'assets/images/bu.png',
-                        color: ColorM.primary),] 
-             ),
-           ),
-              const SizedBox(
-                height: 9,
-              ),
-              Center(
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Container(
-                      width: 8,
-                      height: 8,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: ColorM.primary,
+              SizedBox(
+                height: 150,
+                child: IntroSlider(
+                  indicatorConfig: IndicatorConfig(
+                      colorActiveIndicator: ColorM.primary,
+                      spaceBetweenIndicator: 2,
                       ),
+                  isShowNextBtn: false,
+                  isShowDoneBtn: false,
+                  isShowPrevBtn: false,
+                  isShowSkipBtn: false,
+                  autoScrollInterval: const Duration(seconds: 1),
+                  listCustomTabs: [
+                    SpecialOffers(
+                      dis: '30',
+                      title: 'Special Deal\nFor October!',
+                      image: 'assets/images/bu.png',
+                      color: ColorM.primary,
                     ),
-                    Container(
-                      width: 8,
-                      height: 8,
-                      decoration: const BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: Colors.grey,
-                      ),
+                    const SpecialOffers(
+                      dis: '50',
+                      title: 'Special Deal\nFor October!',
+                      image: 'assets/images/p1.png',
+                      color: Colors.amber,
                     ),
-                    Container(
-                      width: 8,
-                      height: 8,
-                      decoration: const BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: Colors.grey,
-                      ),
+                    const SpecialOffers(
+                      dis: '25',
+                      title: 'Special Deal\nFor October!',
+                      image: 'assets/images/p2.png',
+                      color: Colors.red,
                     ),
                   ],
                 ),
               ),
+
+              const SizedBox(
+                height: 9,
+              ),
+              // Center(
+              //   child: Row(
+              //     crossAxisAlignment: CrossAxisAlignment.center,
+              //     mainAxisAlignment: MainAxisAlignment.center,
+              //     children: [
+              //       Container(
+              //         width: 8,
+              //         height: 8,
+              //         decoration: BoxDecoration(
+              //           shape: BoxShape.circle,
+              //           color: ColorM.primary,
+              //         ),
+              //       ),
+              //       Container(
+              //         width: 8,
+              //         height: 8,
+              //         decoration: const BoxDecoration(
+              //           shape: BoxShape.circle,
+              //           color: Colors.grey,
+              //         ),
+              //       ),
+              //       Container(
+              //         width: 8,
+              //         height: 8,
+              //         decoration: const BoxDecoration(
+              //           shape: BoxShape.circle,
+              //           color: Colors.grey,
+              //         ),
+              //       ),
+              //     ],
+              //   ),
+              // ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
