@@ -1,6 +1,8 @@
+
 import 'package:flutter/material.dart';
 import 'package:projectapp/colors.dart';
 import 'package:projectapp/com.dart';
+import 'package:projectapp/special_offers.dart';
 
 import 'cat_itam.dart';
 import 'home_item.dart';
@@ -14,6 +16,7 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: ColorM.seconde,
         actions: [
+        
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Container(
@@ -159,83 +162,56 @@ class HomeScreen extends StatelessWidget {
                       ))
                 ],
               ),
-              Column(
-                children: [
-                  Container(
-                    width: double.infinity,
-                    height: 150,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(16),
-                        color: ColorM.primary),
-                    child: Row(
-                      children: [
-                        const SizedBox(
-                          width: 27.7,
-                        ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: const [
-                            Text(
-                              '30 %',
-                              style: TextStyle(
-                                  fontSize: 40,
-                                  fontWeight: FontWeight.normal,
-                                  color: Colors.white),
-                            ),
-                            Text(
-                              'SPECIAL DEAL\n FOR OCTOBER!',
-                              style: TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.normal,
-                                  color: Colors.white),
-                            ),
-                          ],
-                        ),
-                        Image.asset(
-                          'assets/images/Mask.png',
-                          width: 300,
-                          fit: BoxFit.fitWidth,
-                        )
-                      ],
+           SizedBox(
+            height: 150,
+             child: ListView(
+
+               children:[SpecialOffers(
+                          dis: '30',
+                          title: 'Special Deal\nFor October!',
+                          image: 'assets/images/bu.png',
+                          color: ColorM.primary),
+                          SpecialOffers(
+                        dis: '30',
+                        title: 'Special Deal\nFor October!',
+                        image: 'assets/images/bu.png',
+                        color: ColorM.primary),] 
+             ),
+           ),
+              const SizedBox(
+                height: 9,
+              ),
+              Center(
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                      width: 8,
+                      height: 8,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: ColorM.primary,
+                      ),
                     ),
-                  ),
-                  const SizedBox(
-                    height: 9,
-                  ),
-                  Center(
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Container(
-                          width: 8,
-                          height: 8,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: ColorM.primary,
-                          ),
-                        ),
-                        Container(
-                          width: 8,
-                          height: 8,
-                          decoration: const BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: Colors.grey,
-                          ),
-                        ),
-                        Container(
-                          width: 8,
-                          height: 8,
-                          decoration: const BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: Colors.grey,
-                          ),
-                        ),
-                      ],
+                    Container(
+                      width: 8,
+                      height: 8,
+                      decoration: const BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Colors.grey,
+                      ),
                     ),
-                  )
-                ],
+                    Container(
+                      width: 8,
+                      height: 8,
+                      decoration: const BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Colors.grey,
+                      ),
+                    ),
+                  ],
+                ),
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -267,6 +243,7 @@ class HomeScreen extends StatelessWidget {
                     icon: topRateData['item'][index]['icon'],
                     title: topRateData['item'][index]['title'],
                     price: topRateData['item'][index]['price'],
+                    onPressed: () {},
                   ),
                 ),
               ),
@@ -300,6 +277,7 @@ class HomeScreen extends StatelessWidget {
                     icon: nearToData['item'][index]['icon'],
                     title: nearToData['item'][index]['title'],
                     price: nearToData['item'][index]['price'],
+                    onPressed: () {},
                   ),
                 ),
               ),
